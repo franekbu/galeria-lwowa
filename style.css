@@ -1,0 +1,359 @@
+:root{
+    --color-red:rgb(218, 37, 29);
+    --color-yellow:rgb(248, 195, 0);
+    --color-green:rgb(0, 146, 63);
+    --color-blue:rgb(0, 124, 195);
+    --color-black:rgb(0, 0, 18);
+
+    --color-red-bg:rgba(218, 37, 29,0.8);
+    --color-yellow-bg:rgba(248, 195, 0,0.8);
+    --color-green-bg:rgba(0, 146, 63,0.8);
+    --color-blue0-bg:rgba(0, 124, 195,0.8);
+    --color-black-bg:rgba(0, 0, 18,0.8);
+
+
+    --color-black-text:#0f0c0c;
+    --color-black-bg:#17171f;
+    --color-white-bg:#ebebf0;
+
+    --color-glass-gradient-top: rgba(255, 255, 255,0.3);
+    --color-glass-gradient-bottom: rgba(255, 255, 255,0.5);
+
+    /* background: rgb(0,0,18);
+    background: linear-gradient(77deg, rgba(0,0,18,1) 0%, rgba(248,195,0,1) 100%); */
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden; 
+    font-size: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    transition: background 0.2s, color 0.2s;
+}
+
+/* pod js bo coś innego nie działało */
+body.overflow__hidden{
+    overflow: hidden;
+}
+
+header{
+    width: 100%;
+    max-height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2% 0;
+    position: relative;
+    backdrop-filter: blur(8px);
+}
+
+header h1{
+    font-size: 4em;
+}
+
+header img{
+    max-height: 4em;
+}
+
+/* button.change__light__mode    reszta jego stylizacji w light modeach na dole */
+button.change__light__mode{
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-50%,-50%);
+
+    width: 6em;
+    height: 6em;
+    border-radius:50%;
+    border:none;
+    cursor: pointer;
+
+
+}
+
+button.change__light__mode img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    min-width: 12em;
+    min-height: 12em;
+}
+
+main{
+    margin: 0 auto;
+    background: linear-gradient(
+        to top right,
+        var(--color-glass-gradient-bottom),
+        var(--color-glass-gradient-top)
+    );
+    padding: 5%;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul.gallery{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4,280px);
+    gap: 15px;
+    float: left;
+}
+
+.gallery__li{
+    display: grid;
+    place-items: center;
+    min-width: 280px;
+    min-height: 200px;
+}
+
+/* nie działa z js wiec zostawiam ale komentuje
+.gallery__li::after{
+    content: "";
+    display: none;
+    min-width: 2em;
+    min-height: 2em;
+    border-radius: 50%;
+    border: 5px outset var(--color-red)    ;
+    animation: rotating 5s linear infinite;
+    position: absolute;
+} */
+
+.gallery__li--img{
+    max-height: 200px;
+    border-radius: 15px;
+
+    box-shadow: 0px 0px 10px 0px rgba(151, 152, 177, 1);
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s;
+}
+
+.gallery__li--img:hover{
+    transform: scale(1.1);
+}
+
+.gallery__li--img:focus,
+.gallery__li--img:focus-visible{
+    border:5px solid var(--color-red)
+}
+
+section.image__zoom{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    animation: showing_Up_Image_Zoom 0.3s;
+}
+
+section.image__zoom.closing{
+    animation: showing_Down_Image_Zoom 0.3s both;
+    /* bez both  zoom migał nam przy znikaniu  */
+}
+
+section.image__zoom.hidden{
+    display: none;
+}
+section.image__zoom button{
+    font-size: 2em;
+    position: absolute; 
+    min-width: 3em;
+    min-height: 3em;
+    border-radius: 50%;
+    border: none;
+    z-index: 1;
+}
+
+section.image__zoom button:focus,
+section.image__zoom button:focus-visible{
+    border: 5px solid var(--color-red);
+}
+
+button.image__zoom--close{
+    top: 10%;
+    right: 5%;
+    transform: translate(-50%,-50%);
+}
+
+button.image__zoom--previous_img{
+    top: 50%;
+    left: 5%;
+    transform: translate(-50%,-50%);
+}
+
+button.image__zoom--next_img{
+    top: 50%;
+    right: 5%;
+    transform: translate(-50%,-50%);
+}
+
+.image__zoom--img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-55%,-50%);
+    max-width: 80%;
+    max-height: 80%;
+}
+
+
+footer{
+    margin: 1% 0;
+    text-align: center;
+}
+
+/* tryb dzienny */
+
+body.light__mode{
+    background: var(--color-white-bg);
+    color: var(--color-black-bg);
+}
+
+body.light__mode button.change__light__mode{
+    background: var(--color-black-bg);
+}
+body.light__mode button.change__light__mode::after{
+    content: "";
+    display: block;
+    width: 4.5em;
+    height: 4.5em;
+    border-radius: 50%;
+    background: var(--color-white-bg);
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+body.light__mode button.change__light__mode img{
+    display: none;
+}
+
+body.light__mode section.image__zoom button{
+    background: var(--color-black-text);
+    color: var(--color-white-bg);
+}
+
+/* tryb nocny */
+
+body.dark__mode{
+    background: var(--color-black-bg);
+    color: var(--color-white-bg);
+}
+
+body.dark__mode button.change__light__mode{
+    background: var(--color-yellow);
+}
+
+body.dark__mode section.image__zoom button{
+    background: var(--color-white-bg);
+    color: var(--color-black-text);
+}
+
+@keyframes showing_Up_Image_Zoom {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes showing_Down_Image_Zoom {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/*  nie działa js do ktorego to było 
+@keyframes rotating {
+    form {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+} */
+
+/* not enough space  */
+@media screen and ( max-width: 1340px ) {
+    ul.gallery{
+        grid-template-columns: repeat(3,280px);
+    }
+}
+
+/* laptops */
+@media screen and ( max-width: 992px ) {
+    ul.gallery{
+        grid-template-columns: repeat(2,280px);
+    }
+    button.change__light__mode{
+        width: 4em;
+        height: 4em;
+    }
+    body.light__mode button.change__light__mode::after{
+        width: 2.5em;
+        height: 2.5em;
+    }
+    button.change__light__mode img{
+        min-width: 8em;
+        min-height: 8em;
+    }
+    section.image__zoom button{
+        font-size: 1em;
+        max-width: 2em;
+        max-height: 2em;
+    }
+}
+
+/* smartphones  */
+@media screen and ( max-width: 700px ) {
+    body{
+        font-size: 16px;
+        overflow-x: hidden;
+    }
+    header h1{
+        font-size: 2em;
+    }
+    header img{
+        max-height: 2em;
+    }
+    ul.gallery{
+        grid-template-columns: repeat(1,280px);
+    }
+    button.change__light__mode{
+        width: 2em;
+        height: 2em;
+    }
+    body.light__mode button.change__light__mode::after{
+        width: 1.2em;
+        height: 1.2em;
+    }
+    button.change__light__mode img{
+        min-width: 4em;
+        min-height: 4em;
+    }
+}
+
+
+

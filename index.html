@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="Franciszek Bury">
+        <title>Moja własna galeria zdjęć ze Lwowa</title>
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body class="light__mode">
+        <header>
+            <img src="images/herb lwowa.svg" alt="herb Lwowa">
+            <h1>Galeria Lwowa</h1> 
+            <button class="change__light__mode" arria-label="Przycisk do zmieniania trybu. Tryb nocny/tryb dzienny">
+                <img src="images/promyczki.png" alt="" aria-hidden="true">
+            </button>
+        </header>
+        <main>
+            <section>
+                <ul class="gallery">
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/1.JPG" alt="" tabindex="1">   </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/2.JPG" alt="" tabindex="1">   </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/3.JPG" alt="" tabindex="1">   </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/4.JPG" alt="" tabindex="1">   </li>
+
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/5.JPG" alt="" tabindex="1">   </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/6.JPG" alt="" tabindex="1">   </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/7.JPG" alt="" tabindex="1">   </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/8.JPG" alt="" tabindex="1">   </li>
+
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/9.JPG" alt="" tabindex="1">   </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/10.JPG" alt="" tabindex="1">  </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/11.JPG" alt="" tabindex="1">  </li>
+                    <li class="gallery__li" >   <img class="gallery__li--img" src="images/12.JPG" alt="" tabindex="1">  </li>
+                </ul>
+            </section>
+        </main>
+        <section class="image__zoom hidden">
+            <button class="image__zoom--close">
+                X
+            </button>
+
+            <img class="image__zoom--img" src="" alt="">
+
+            <button class="image__zoom--previous_img">
+                <
+            </button>
+            <button class="image__zoom--next_img">
+                >
+            </button>
+        </section>
+        <footer>
+            <p>Galeria Lwowa &copywszelkie prawa zastrzeżone Autor: Franciszek Bury</p>
+        </footer>
+        <script src="app.js"></script>
+    </body>
+</html>
